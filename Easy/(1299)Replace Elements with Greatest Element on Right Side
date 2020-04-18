@@ -1,0 +1,31 @@
+//Problem:
+//https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side
+class Solution {
+    public int[] replaceElements(int[] arr) {
+        for(int i=0;i<arr.length;i++)
+        {   
+            if(i<arr.length)
+            {
+            int max= maxFinder(arr,i+1);
+            arr[i]=max;
+            }    
+            if(i==arr.length-1)
+                arr[i]=-1;
+                
+        }
+        return arr;
+        
+    }
+    public int maxFinder(int A[],int index)
+    {
+        
+        int max=Integer.MIN_VALUE;
+        for(int i=index;i<A.length;i++)
+        {
+            
+            if(A[i]>max)
+                max=A[i];
+        }
+        return max;
+    }
+}
