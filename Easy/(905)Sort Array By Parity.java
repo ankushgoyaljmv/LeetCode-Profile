@@ -1,5 +1,28 @@
 class Solution {
-/***********Extra Space****************/
+
+    /**************Implace************************/
+
+        public int[] sortArrayByParity(int[] A) 
+        {
+            
+            for(int i=0,j=0;i<A.length;i++)
+            {
+                if (A[i] % 2 == 0) 
+                {
+                    swap(A, i, j++);
+                }
+            }
+            return A;
+        }
+    
+        public void swap(int[] A, int i, int j) {
+            int temp = A[i];
+            A[i] = A[j];
+            A[j] = temp;
+        }
+
+
+    /***********Extra Space****************/
 
     //     public int[] sortArrayByParity(int[] A) {
     //         int res[]=new int[A.length];
