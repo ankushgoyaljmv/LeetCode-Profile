@@ -1,0 +1,25 @@
+public int distinctSubseqII(String S) {
+        int n = S.length();
+       if(n==0) return 0;
+       
+       int mod = (int)1e9 + 7;
+       
+       S = "$"+S;
+       int[] dp = new int[n+1];
+       int[] locc = new int[26];
+       Arrays.fill(locc,-1);
+       
+       dp[0] = 1;
+       for(int i = 1;i <= n; i++){
+           char ch = S.charAt(i);
+           
+           dp[i] = (dp[i-1] * 2) % mod;
+           if(locc[ch-'a']!=-1){
+               dp[i] =(dp[i] % mod  - dp[locc[ch-'a'] - 1] % mod + mod) % mod;
+           }
+           
+           locc[ch-'a'] = i;
+       }
+       
+       return dp[n] - 1;   
+   }
